@@ -1,5 +1,7 @@
 import counterReducer, {
+    decrement,
     increment,
+    incrementByAmount,
 } from './counterSlice'
 
 describe('counter slice', () => {
@@ -14,5 +16,13 @@ describe('counter slice', () => {
     it('should handle increment', () => {
         const actual = counterReducer(initialState, increment())
         expect(actual.value).toEqual(4)
+    })
+    it('should handle decrement', () => {
+        const actual = counterReducer(initialState, decrement())
+        expect(actual.value).toEqual(2)
+    })
+    it('should handle increment by amount', () => {
+        const actual = counterReducer(initialState, incrementByAmount(3))
+        expect(actual.value).toEqual(6)
     })
 })
