@@ -1,16 +1,22 @@
-import './App.css';
-import Hello from './components/hello/Hello';
-import { Counter } from './features/counter/Counter';
+import React from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-         <Hello name="Adriano"/>
-         <Counter />
-      </header>
-    </div>
-  );
-}
+import { NavBar } from './app/NavBar';
+
+import { PostList } from './features/posts/PostList';
+
+import './App.css';
+
+const App = () =>
+  <BrowserRouter>
+    <NavBar />
+    <Routes>
+      <Route path="/" element={<PostList />} />
+    </Routes>
+  </BrowserRouter>
 
 export default App;
