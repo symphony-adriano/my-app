@@ -10,8 +10,8 @@ export function Counter() {
   return (
     <div>
       <div>
-        <span>{count}</span>
         <button onClick={() => dispatch(increment())}>+</button>
+        <span>{count}</span>
         <button onClick={() => dispatch(decrement())}>-</button>
       </div>
       <div>
