@@ -8,6 +8,7 @@ import {
 import { NavBar } from './app/NavBar';
 
 import { PostList } from './features/posts/PostList';
+import { AddPostForm } from './features/posts/AddPostForm';
 
 import './App.css';
 
@@ -16,6 +17,7 @@ const App = () =>
     <NavBar />
     <Routes>
       <Route path="/" element={<PostList />} />
+      <Route path="/add" element={<AddPostForm />} />
     </Routes>
   </BrowserRouter>
 
