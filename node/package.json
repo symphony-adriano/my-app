@@ -6,7 +6,8 @@
   "author": "Adriano Grimolizzi",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --project tsconfig.build.json",
+    "clean": "rm -rf ./dist",
     "start": "node dist/server.js",
     "watch": "npx nodemon src/server.ts",
     "test": "jest --verbose"
