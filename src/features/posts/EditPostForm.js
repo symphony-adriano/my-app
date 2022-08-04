@@ -1,26 +1,25 @@
-import { nanoid } from '@reduxjs/toolkit';
-import { Formik, Field, Form } from 'formik';
-import { useDispatch } from 'react-redux';
-import { postAdded } from './postsSlice';
+import { Formik, Field, Form } from 'formik'
+import { useDispatch, useSelector } from "react-redux"
+import { useParams } from "react-router-dom"
+import { postUpdated } from './postsSlice'
 
-export const AddPostForm = () => {
+export const EditPostForm = () => {
+  const { postId } = useParams()
+
+  const post = useSelector(state =>
+    state.posts.find(({ id }) => id === postId))
 
   const dispatch = useDispatch()
 
   const initialValues = {
-    title: '',
-    content: '',
+    title: post.title,
+    content: post.content,
   }
 
   const handleSubmit = ({ title, content }) => {
     if (title && content) {
-      dispatch(
-        postAdded({
-          id: nanoid(),
-          title,
-          content,
-        })
-      )
+      dispatch(postUpdated({ id: postId, title, content }))
+      history.pushState(`/posts/${postId}`)
     }
   }
 
