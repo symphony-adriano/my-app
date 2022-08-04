@@ -1,14 +1,12 @@
-import { Request, Response } from "express"
+import http from 'http'
 
-const express = require("express")
+import app from './app'
 
-const app = express()
 const PORT = 4000
 
-app.get("/", (_request: Request, response: Response) => {
-  response.send("Sweet Child O' Mine! Where do go now?")
+const httpServer = http.createServer(app)
+
+httpServer.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`)
 })
 
-app.listen(PORT, () => {
-  console.log(`Server started at http://localhost:${PORT}`)
-})
