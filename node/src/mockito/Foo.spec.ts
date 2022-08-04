@@ -1,6 +1,6 @@
 const { anything, mock, instance, verify, when, } = require('ts-mockito')
 
-const Foo = require('./Foo')
+import Foo from './Foo'
 
 describe('Foo', () => {
   it('should return Fortunate Son if not mocked', () => {

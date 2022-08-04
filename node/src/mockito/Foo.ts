@@ -1,7 +1,5 @@
 class Foo {
   private _age: number
-  // private _firstName: string;
-  // private _lastName: string;
 
   public getBar = () => 'Fortunate Son'
 
