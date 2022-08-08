@@ -1,16 +1,8 @@
 const add = (args) => aux({ ...args, arrayDirection: 'horizontal' })
 
 const aux = ({ input, element, newElement, elementDirection, arrayDirection }) => {
-
-    const sameDirection = isSameDirection(elementDirection, arrayDirection)
-    const before = isBefore(elementDirection)
-
     if (input.includes(element)) {
-        if (sameDirection) {
-            return insertElement(input, element, newElement, before)
-        } else {
-            return insertArray(input, element, newElement, before)
-        }
+        return addInArray({ input, element, newElement, before:isBefore(elementDirection), sameDirection: isSameDirection(elementDirection, arrayDirection)})
     } else if (shouldRecurse(input)) {
         return input.map(currentArray => aux({ input: currentArray, element, newElement, elementDirection, arrayDirection: switchArrayDirection(arrayDirection) }))
     } else {
@@ -30,28 +22,31 @@ const isBefore = (elementDirection) => (elementDirection === 'left' || elementDi
 
 const containsArray = array => array.some(element => Array.isArray(element))
 
-const insertElement = (input, element, newElement, before) => {
-    const array = [...input]
-    let index = array.indexOf(element)
+const addInArray = ({ input, element, newElement, before, sameDirection }) => {
+    const inputCopy = [...input]
+    const index = input.indexOf(element)
 
+    if (sameDirection) {
+        return addInSameDirection({ input: inputCopy, index, newElement, before })
+    } else {
+        return addInDifferentDirection({ input: inputCopy, index, element, newElement, before })
+    }
+}
+
+const addInSameDirection = ({ input, index, newElement, before }) => {
     if (!before) {
         index++
     }
-    array.splice(index, 0, newElement)
+    input.splice(index, 0, newElement)
 
-    return array
+    return input
 }
-
-const insertArray = (input, element, newElement, before) => {
-    const array = [...input]
-    const index = array.indexOf(element)
-    const newArray = before ? [newElement, element] : [element, newElement]
-    array.splice(index, 1, newArray)
-    return array
+const addInDifferentDirection = ({ input, index, element, newElement, before }) => {
+    input.splice(index, 1, before ? [newElement, element] : [element, newElement])
+    return input
 }
 
 module.exports = {
     add,
-    insertElement,
-    insertArray,
+    addInArray
 }

@@ -1,4 +1,4 @@
-const { add, insertElement, insertArray } = require('./layout')
+const { add, addInArray } = require('./layout')
 
 const a = 'a'
 const b = 'b'
@@ -6,21 +6,21 @@ const c = 'c'
 const n = 'n'
 
 describe('insert:', () => {
-    it('should insert same direction', () => {
-        const input = [a, b, c]
-        expect(insertElement(input, a, n, true)).toEqual([n, a, b, c])
-        expect(insertElement(input, b, n, true)).toEqual([a, n, b, c])
-        expect(insertElement(input, b, n)).toEqual([a, b, n, c])
-        expect(insertElement(input, c, n)).toEqual([a, b, c, n])
-    })
+    // it('should insert same direction', () => {
+    //     const input = [a, b, c]
+    //     expect(insertElement(input, a, n, true)).toEqual([n, a, b, c])
+    //     expect(insertElement(input, b, n, true)).toEqual([a, n, b, c])
+    //     expect(insertElement(input, b, n, false)).toEqual([a, b, n, c])
+    //     expect(insertElement(input, c, n, false)).toEqual([a, b, c, n])
+    // })
     it('should insert diff direction', () => {
         const input = [a, b, c]
-        expect(insertArray(input, a, n, true)).toEqual([[n, a], b, c])
-        expect(insertArray(input, b, n, true)).toEqual([a, [n, b], c])
-        expect(insertArray(input, c, n, true)).toEqual([a, b, [n, c]])
-        expect(insertArray(input, a, n)).toEqual([[a, n], b, c])
-        expect(insertArray(input, b, n)).toEqual([a, [b, n], c])
-        expect(insertArray(input, c, n)).toEqual([a, b, [c, n]])
+        expect(addInArray({input, element: a, newElement: n, before: true})).toEqual([[n, a], b, c])
+        expect(addInArray({input, element: b, newElement: n, before: true})).toEqual([a, [n, b], c])
+        expect(addInArray({input, element: c, newElement: n, before: true})).toEqual([a, b, [n, c]])
+        expect(addInArray({input, element: a, newElement: n, before: false})).toEqual([[a, n], b, c])
+        expect(addInArray({input, element: b, newElement: n, before: false})).toEqual([a, [b, n], c])
+        expect(addInArray({input, element: c, newElement: n, before: false})).toEqual([a, b, [c, n]])
     })
 })
 describe('add:', () => {
