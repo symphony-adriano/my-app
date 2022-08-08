@@ -31,6 +31,7 @@ const App = () =>
         >
         </Route>
         <Route exact path="/posts/:postId" element={<SinglePostPage />} />
+        <Route exact path="/posts/add" element={<AddPostForm />} />
         <Route exact path="/editPost/:postId" element={<EditPostForm />} />
         <Route exact path="/" element={<Navigate replace to="/posts" />} />
       </Routes>

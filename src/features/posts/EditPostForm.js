@@ -1,10 +1,11 @@
 import { Formik, Field, Form } from 'formik'
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { postUpdated } from './postsSlice'
 
 export const EditPostForm = () => {
   const { postId } = useParams()
+  const { navigate } = useNavigate()
 
   const post = useSelector(state =>
     state.posts.find(({ id }) => id === postId))
@@ -19,7 +20,7 @@ export const EditPostForm = () => {
   const handleSubmit = ({ title, content }) => {
     if (title && content) {
       dispatch(postUpdated({ id: postId, title, content }))
-      history.pushState(`/posts/${postId}`)
+      navigate(`/posts/${postId}`)
     }
   }
 
