@@ -3,6 +3,8 @@ const { add, addInArray } = require('./layout')
 const a = 'a'
 const b = 'b'
 const c = 'c'
+const d = 'd'
+const e = 'e'
 const n = 'n'
 
 describe('insert:', () => {
@@ -47,5 +49,9 @@ describe('add:', () => {
         expect(add({ input, element: b, newElement: n, elementDirection: 'right' })).toEqual([a, [[b, n], c]])
         expect(add({ input, element: b, newElement: n, elementDirection: 'top' })).toEqual([a, [n, b, c]])
         expect(add({ input, element: b, newElement: n, elementDirection: 'bottom' })).toEqual([a, [b, n, c]])
+    })
+    it('should add to nested nested array', () => {
+        const input = [a, [[b, c], d], e]
+        expect(add({ input, element: b, newElement: n, elementDirection: 'top' })).toEqual([a, [[[n, b], c], d], e])
     })
 })

@@ -2,7 +2,7 @@ const add = (args) => aux({ ...args, arrayDirection: 'horizontal' })
 
 const aux = ({ input, element, newElement, elementDirection, arrayDirection }) => {
     if (input.includes(element)) {
-        return addInArray({ input, element, newElement, before:isBefore(elementDirection), sameDirection: isSameDirection(elementDirection, arrayDirection)})
+        return addInArray({ input, element, newElement, before: isBefore(elementDirection), sameDirection: isSameDirection(elementDirection, arrayDirection) })
     } else if (shouldRecurse(input)) {
         return input.map(currentArray => aux({ input: currentArray, element, newElement, elementDirection, arrayDirection: switchArrayDirection(arrayDirection) }))
     } else {
@@ -24,26 +24,17 @@ const containsArray = array => array.some(element => Array.isArray(element))
 
 const addInArray = ({ input, element, newElement, before, sameDirection }) => {
     const inputCopy = [...input]
-    const index = input.indexOf(element)
-
+    let index = input.indexOf(element)
     if (sameDirection) {
-        return addInSameDirection({ input: inputCopy, index, newElement, before })
+        if (!before) {
+            index++
+        }
+        inputCopy.splice(index, 0, newElement)
     } else {
-        return addInDifferentDirection({ input: inputCopy, index, element, newElement, before })
+        const newArray = before ? [newElement, element] : [element, newElement]
+        inputCopy.splice(index, 1, newArray)
     }
-}
-
-const addInSameDirection = ({ input, index, newElement, before }) => {
-    if (!before) {
-        index++
-    }
-    input.splice(index, 0, newElement)
-    return input
-}
-const addInDifferentDirection = ({ input, index, element, newElement, before }) => {
-    const newArray = before ? [newElement, element] : [element, newElement]
-    input.splice(index, 1, newArray)
-    return input
+    return inputCopy
 }
 
 module.exports = {
