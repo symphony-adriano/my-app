@@ -6,23 +6,26 @@ const c = 'c'
 const n = 'n'
 
 describe('insert:', () => {
-    // it('should insert same direction', () => {
-    //     const input = [a, b, c]
-    //     expect(insertElement(input, a, n, true)).toEqual([n, a, b, c])
-    //     expect(insertElement(input, b, n, true)).toEqual([a, n, b, c])
-    //     expect(insertElement(input, b, n, false)).toEqual([a, b, n, c])
-    //     expect(insertElement(input, c, n, false)).toEqual([a, b, c, n])
-    // })
+    it('should insert same direction', () => {
+        const input = [a, b, c]
+        expect(addInArray({ input, element: a, newElement: n, before: true, sameDirection: true })).toEqual([n, a, b, c])
+        expect(addInArray({ input, element: a, newElement: n, before: false, sameDirection: true })).toEqual([a, n, b, c])
+        expect(addInArray({ input, element: b, newElement: n, before: true, sameDirection: true })).toEqual([a, n, b, c])
+        expect(addInArray({ input, element: b, newElement: n, before: false, sameDirection: true })).toEqual([a, b, n, c])
+        expect(addInArray({ input, element: c, newElement: n, before: true, sameDirection: true })).toEqual([a, b, n, c])
+        expect(addInArray({ input, element: c, newElement: n, before: false, sameDirection: true })).toEqual([a, b, c, n])
+    })
     it('should insert diff direction', () => {
         const input = [a, b, c]
-        expect(addInArray({input, element: a, newElement: n, before: true})).toEqual([[n, a], b, c])
-        expect(addInArray({input, element: b, newElement: n, before: true})).toEqual([a, [n, b], c])
-        expect(addInArray({input, element: c, newElement: n, before: true})).toEqual([a, b, [n, c]])
-        expect(addInArray({input, element: a, newElement: n, before: false})).toEqual([[a, n], b, c])
-        expect(addInArray({input, element: b, newElement: n, before: false})).toEqual([a, [b, n], c])
-        expect(addInArray({input, element: c, newElement: n, before: false})).toEqual([a, b, [c, n]])
+        expect(addInArray({ input, element: a, newElement: n, before: true })).toEqual([[n, a], b, c])
+        expect(addInArray({ input, element: b, newElement: n, before: true })).toEqual([a, [n, b], c])
+        expect(addInArray({ input, element: c, newElement: n, before: true })).toEqual([a, b, [n, c]])
+        expect(addInArray({ input, element: a, newElement: n, before: false })).toEqual([[a, n], b, c])
+        expect(addInArray({ input, element: b, newElement: n, before: false })).toEqual([a, [b, n], c])
+        expect(addInArray({ input, element: c, newElement: n, before: false })).toEqual([a, b, [c, n]])
     })
 })
+
 describe('add:', () => {
     it('should add to one element', () => {
         const input = [a]

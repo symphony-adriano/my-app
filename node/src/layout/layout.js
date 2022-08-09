@@ -38,15 +38,15 @@ const addInSameDirection = ({ input, index, newElement, before }) => {
         index++
     }
     input.splice(index, 0, newElement)
-
     return input
 }
 const addInDifferentDirection = ({ input, index, element, newElement, before }) => {
-    input.splice(index, 1, before ? [newElement, element] : [element, newElement])
+    const newArray = before ? [newElement, element] : [element, newElement]
+    input.splice(index, 1, newArray)
     return input
 }
 
 module.exports = {
     add,
-    addInArray
+    addInArray,
 }
