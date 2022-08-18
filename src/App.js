@@ -1,9 +1,8 @@
 import React from 'react'
 
 import './App.css'
+import LayoutExample from './components/layout/LayoutExample';
 
-import ReduxExample from './features/ReduxExample'
-
-const App = () => <ReduxExample />
+const App = () => <LayoutExample />
 
 export default App;
