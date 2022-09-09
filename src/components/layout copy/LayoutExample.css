@@ -1,0 +1,46 @@
+.title {
+    text-align: center;
+}
+
+.container {
+    height: 75vh;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+.module {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid black;
+    padding: 2px;
+    margin: 2px;
+}
+
+.cell {
+    background-color: rgba(100, 120, 150, 0.80);
+}
+
+.content {
+    background-color: rgb(120, 150, 200);
+}
+
+.content:hover {
+    background-color: rgb(70, 150, 200);
+}
+
+.stocazzo {
+    background-color: rgb(166, 45, 45) !important;
+}
+
+p {
+    color: rgba(0, 0, 0, 0.715);
+    font-size: 10vh;
+    text-align: center; 
+}
