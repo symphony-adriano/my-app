@@ -3,7 +3,7 @@ import React from 'react'
 // import CustomTextInput from './advanced-guides/refs-and-the-dom/CustomTextInput';
 
 import './App.css'
-import LayoutExample from './components/layout/LayoutExample';
+import LayoutExample from './components/layout-lift-state-up/LayoutExample';
 
 const App = () => (
   <>
