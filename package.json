@@ -13,9 +13,11 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@cfaester/enzyme-adapter-react-18": "^0.5.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0"
+    "@testing-library/user-event": "^13.5.0",
+    "enzyme": "^3.11.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -10,12 +10,9 @@ const LayoutExample = () => {
       <div className={`module cell ${direction}`}>
         {layout.map((inner) => renderLayout(inner, invertDirection(direction)))}
       </div> :
-      renderLeaf(layout)
-
-  const renderLeaf = (element) =>
-    <div key={element} className={`module content`}>
-      <p>{element}</p>
-    </div>
+      <div className={`module content`}>
+        <p>{layout}</p>
+      </div>
 
   return (
     <>

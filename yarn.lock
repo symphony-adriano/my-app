@@ -1070,6 +1070,15 @@
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha1-daLotRy3WKdVPWgEpZMteqznXDk=
 
+"@cfaester/enzyme-adapter-react-18@^0.5.1":
+  version "0.5.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/@cfaester/enzyme-adapter-react-18/-/enzyme-adapter-react-18-0.5.1.tgz#c8d808ed5412cce019f1a04ea910834479f36af5"
+  integrity sha1-yNgI7VQSzOAZ8aBOqRCDRHnzavU=
+  dependencies:
+    enzyme-shallow-equal "^1.0.0"
+    react-is "^18.0.0"
+    react-test-renderer "^18.0.0"
+
 "@csstools/normalize.css@*":
   version "12.0.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/@csstools/normalize.css/-/normalize.css-12.0.0.tgz#a9583a75c3f150667771f30b60d9f059473e62c4"
@@ -2512,7 +2521,18 @@ array-union@^2.1.0:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/array-union/-/array-union-2.1.0.tgz#b798420adbeb1de828d84acd8a2e23d3efe85e8d"
   integrity sha1-t5hCCtvrHego2ErNii4j0+/oXo0=
 
-array.prototype.flat@^1.2.5:
+array.prototype.filter@^1.0.0:
+  version "1.0.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/array.prototype.filter/-/array.prototype.filter-1.0.1.tgz#20688792acdb97a09488eaaee9eebbf3966aae21"
+  integrity sha1-IGiHkqzbl6CUiOqu6e6785ZqriE=
+  dependencies:
+    call-bind "^1.0.2"
+    define-properties "^1.1.3"
+    es-abstract "^1.19.0"
+    es-array-method-boxes-properly "^1.0.0"
+    is-string "^1.0.7"
+
+array.prototype.flat@^1.2.3, array.prototype.flat@^1.2.5:
   version "1.3.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/array.prototype.flat/-/array.prototype.flat-1.3.0.tgz#0b0c1567bf57b38b56b4c97b8aa72ab45e4adc7b"
   integrity sha1-CwwVZ79Xs4tWtMl7iqcqtF5K3Hs=
@@ -2966,6 +2986,31 @@ check-types@^11.1.1:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/check-types/-/check-types-11.1.2.tgz#86a7c12bf5539f6324eb0e70ca8896c0e38f3e2f"
   integrity sha1-hqfBK/VTn2Mk6w5wyoiWwOOPPi8=
 
+cheerio-select@^2.1.0:
+  version "2.1.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/cheerio-select/-/cheerio-select-2.1.0.tgz#4d8673286b8126ca2a8e42740d5e3c4884ae21b4"
+  integrity sha1-TYZzKGuBJsoqjkJ0DV48SISuIbQ=
+  dependencies:
+    boolbase "^1.0.0"
+    css-select "^5.1.0"
+    css-what "^6.1.0"
+    domelementtype "^2.3.0"
+    domhandler "^5.0.3"
+    domutils "^3.0.1"
+
+cheerio@^1.0.0-rc.3:
+  version "1.0.0-rc.12"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/cheerio/-/cheerio-1.0.0-rc.12.tgz#788bf7466506b1c6bf5fae51d24a2c4d62e47683"
+  integrity sha1-eIv3RmUGsca/X65R0kosTWLkdoM=
+  dependencies:
+    cheerio-select "^2.1.0"
+    dom-serializer "^2.0.0"
+    domhandler "^5.0.3"
+    domutils "^3.0.1"
+    htmlparser2 "^8.0.1"
+    parse5 "^7.0.0"
+    parse5-htmlparser2-tree-adapter "^7.0.0"
+
 chokidar@^3.4.2, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
@@ -3072,7 +3117,7 @@ combined-stream@^1.0.8:
   dependencies:
     delayed-stream "~1.0.0"
 
-commander@^2.20.0:
+commander@^2.19.0, commander@^2.20.0:
   version "2.20.3"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha1-/UhehMA+tIgcIHIrpIA16FMa6zM=
@@ -3301,6 +3346,17 @@ css-select@^4.1.3:
     domutils "^2.8.0"
     nth-check "^2.0.1"
 
+css-select@^5.1.0:
+  version "5.1.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/css-select/-/css-select-5.1.0.tgz#b8ebd6554c3637ccc76688804ad3f6a6fdaea8a6"
+  integrity sha1-uOvWVUw2N8zHZoiAStP2pv2uqKY=
+  dependencies:
+    boolbase "^1.0.0"
+    css-what "^6.1.0"
+    domhandler "^5.0.2"
+    domutils "^3.0.1"
+    nth-check "^2.0.1"
+
 css-tree@1.0.0-alpha.37:
   version "1.0.0-alpha.37"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/css-tree/-/css-tree-1.0.0-alpha.37.tgz#98bebd62c4c1d9f960ec340cf9f7522e30709a22"
@@ -3322,7 +3378,7 @@ css-what@^3.2.1:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/css-what/-/css-what-3.4.2.tgz#ea7026fcb01777edbde52124e21f327e7ae950e4"
   integrity sha1-6nAm/LAXd+295SEk4h8yfnrpUOQ=
 
-css-what@^6.0.1:
+css-what@^6.0.1, css-what@^6.1.0:
   version "6.1.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/css-what/-/css-what-6.1.0.tgz#fb5effcf76f1ddea2c81bdfaa4de44e79bac70f4"
   integrity sha1-+17/z3bx3eosgb36pN5E55uscPQ=
@@ -3588,6 +3644,11 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+discontinuous-range@1.0.0:
+  version "1.0.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/discontinuous-range/-/discontinuous-range-1.0.0.tgz#e38331f0844bba49b9a9cb71c771585aab1bc65a"
+  integrity sha1-44Mx8IRLukm5qctxx3FYWqsbxlo=
+
 dlv@^1.1.3:
   version "1.1.3"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/dlv/-/dlv-1.1.3.tgz#5c198a8a11453596e751494d49874bc7732f2e79"
@@ -3648,12 +3709,21 @@ dom-serializer@^1.0.1:
     domhandler "^4.2.0"
     entities "^2.0.0"
 
+dom-serializer@^2.0.0:
+  version "2.0.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/dom-serializer/-/dom-serializer-2.0.0.tgz#e41b802e1eedf9f6cae183ce5e622d789d7d8e53"
+  integrity sha1-5BuALh7t+fbK4YPOXmIteJ19jlM=
+  dependencies:
+    domelementtype "^2.3.0"
+    domhandler "^5.0.2"
+    entities "^4.2.0"
+
 domelementtype@1:
   version "1.3.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domelementtype/-/domelementtype-1.3.1.tgz#d048c44b37b0d10a7f2a3d5fee3f4333d790481f"
   integrity sha1-0EjESzew0Qp/Kj1f7j9DM9eQSB8=
 
-domelementtype@^2.0.1, domelementtype@^2.2.0:
+domelementtype@^2.0.1, domelementtype@^2.2.0, domelementtype@^2.3.0:
   version "2.3.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domelementtype/-/domelementtype-2.3.0.tgz#5c45e8e869952626331d7aab326d01daf65d589d"
   integrity sha1-XEXo6GmVJiYzHXqrMm0B2vZdWJ0=
@@ -3672,6 +3742,13 @@ domhandler@^4.0.0, domhandler@^4.2.0, domhandler@^4.3.1:
   dependencies:
     domelementtype "^2.2.0"
 
+domhandler@^5.0.1, domhandler@^5.0.2, domhandler@^5.0.3:
+  version "5.0.3"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domhandler/-/domhandler-5.0.3.tgz#cc385f7f751f1d1fc650c21374804254538c7d31"
+  integrity sha1-zDhff3UfHR/GUMITdIBCVFOMfTE=
+  dependencies:
+    domelementtype "^2.3.0"
+
 domutils@^1.7.0:
   version "1.7.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domutils/-/domutils-1.7.0.tgz#56ea341e834e06e6748af7a1cb25da67ea9f8c2a"
@@ -3688,6 +3765,15 @@ domutils@^2.5.2, domutils@^2.8.0:
     dom-serializer "^1.0.1"
     domelementtype "^2.2.0"
     domhandler "^4.2.0"
+
+domutils@^3.0.1:
+  version "3.0.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/domutils/-/domutils-3.0.1.tgz#696b3875238338cb186b6c0612bd4901c89a4f1c"
+  integrity sha1-aWs4dSODOMsYa2wGEr1JAciaTxw=
+  dependencies:
+    dom-serializer "^2.0.0"
+    domelementtype "^2.3.0"
+    domhandler "^5.0.1"
 
 dot-case@^3.0.4:
   version "3.0.4"
@@ -3771,6 +3857,47 @@ entities@^2.0.0:
   version "2.2.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/entities/-/entities-2.2.0.tgz#098dc90ebb83d8dffa089d55256b351d34c4da55"
   integrity sha1-CY3JDruD2N/6CJ1VJWs1HTTE2lU=
+
+entities@^4.2.0, entities@^4.3.0, entities@^4.4.0:
+  version "4.4.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/entities/-/entities-4.4.0.tgz#97bdaba170339446495e653cfd2db78962900174"
+  integrity sha1-l72roXAzlEZJXmU8/S23iWKQAXQ=
+
+enzyme-shallow-equal@^1.0.0, enzyme-shallow-equal@^1.0.1:
+  version "1.0.4"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/enzyme-shallow-equal/-/enzyme-shallow-equal-1.0.4.tgz#b9256cb25a5f430f9bfe073a84808c1d74fced2e"
+  integrity sha1-uSVsslpfQw+b/gc6hICMHXT87S4=
+  dependencies:
+    has "^1.0.3"
+    object-is "^1.1.2"
+
+enzyme@^3.11.0:
+  version "3.11.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/enzyme/-/enzyme-3.11.0.tgz#71d680c580fe9349f6f5ac6c775bc3e6b7a79c28"
+  integrity sha1-cdaAxYD+k0n29axsd1vD5rennCg=
+  dependencies:
+    array.prototype.flat "^1.2.3"
+    cheerio "^1.0.0-rc.3"
+    enzyme-shallow-equal "^1.0.1"
+    function.prototype.name "^1.1.2"
+    has "^1.0.3"
+    html-element-map "^1.2.0"
+    is-boolean-object "^1.0.1"
+    is-callable "^1.1.5"
+    is-number-object "^1.0.4"
+    is-regex "^1.0.5"
+    is-string "^1.0.5"
+    is-subset "^0.1.1"
+    lodash.escape "^4.0.1"
+    lodash.isequal "^4.5.0"
+    object-inspect "^1.7.0"
+    object-is "^1.0.2"
+    object.assign "^4.1.0"
+    object.entries "^1.1.1"
+    object.values "^1.1.1"
+    raf "^3.4.1"
+    rst-selector-parser "^2.2.3"
+    string.prototype.trim "^1.2.1"
 
 error-ex@^1.3.1:
   version "1.3.2"
@@ -4460,7 +4587,7 @@ function-bind@^1.1.1:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha1-pWiZ0+o8m6uHS7l3O3xe3pL0iV0=
 
-function.prototype.name@^1.1.5:
+function.prototype.name@^1.1.2, function.prototype.name@^1.1.5:
   version "1.1.5"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/function.prototype.name/-/function.prototype.name-1.1.5.tgz#cce0505fe1ffb80503e6f9e46cc64e46a12a9621"
   integrity sha1-zOBQX+H/uAUD5vnkbMZORqEqliE=
@@ -4690,6 +4817,14 @@ hpack.js@^2.1.6:
     readable-stream "^2.0.1"
     wbuf "^1.1.0"
 
+html-element-map@^1.2.0:
+  version "1.3.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/html-element-map/-/html-element-map-1.3.1.tgz#44b2cbcfa7be7aa4ff59779e47e51012e1c73c08"
+  integrity sha1-RLLLz6e+eqT/WXeeR+UQEuHHPAg=
+  dependencies:
+    array.prototype.filter "^1.0.0"
+    call-bind "^1.0.2"
+
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/html-encoding-sniffer/-/html-encoding-sniffer-2.0.1.tgz#42a6dc4fd33f00281176e8b23759ca4e4fa185f3"
@@ -4740,6 +4875,16 @@ htmlparser2@^6.1.0:
     domhandler "^4.0.0"
     domutils "^2.5.2"
     entities "^2.0.0"
+
+htmlparser2@^8.0.1:
+  version "8.0.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/htmlparser2/-/htmlparser2-8.0.1.tgz#abaa985474fcefe269bc761a779b544d7196d010"
+  integrity sha1-q6qYVHT87+JpvHYad5tUTXGW0BA=
+  dependencies:
+    domelementtype "^2.3.0"
+    domhandler "^5.0.2"
+    domutils "^3.0.1"
+    entities "^4.3.0"
 
 http-deceiver@^1.2.7:
   version "1.2.7"
@@ -4942,7 +5087,7 @@ is-binary-path@~2.1.0:
   dependencies:
     binary-extensions "^2.0.0"
 
-is-boolean-object@^1.1.0:
+is-boolean-object@^1.0.1, is-boolean-object@^1.1.0:
   version "1.1.2"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/is-boolean-object/-/is-boolean-object-1.1.2.tgz#5c6dc200246dd9321ae4b885a114bb1f75f63719"
   integrity sha1-XG3CACRt2TIa5LiFoRS7H3X2Nxk=
@@ -4954,6 +5099,11 @@ is-callable@^1.1.4, is-callable@^1.2.4:
   version "1.2.4"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/is-callable/-/is-callable-1.2.4.tgz#47301d58dd0259407865547853df6d61fe471945"
   integrity sha1-RzAdWN0CWUB4ZVR4U99tYf5HGUU=
+
+is-callable@^1.1.5:
+  version "1.2.5"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/is-callable/-/is-callable-1.2.5.tgz#6123e0b1fef5d7591514b371bb018204892f1a2b"
+  integrity sha1-YSPgsf7111kVFLNxuwGCBIkvGis=
 
 is-core-module@^2.8.1, is-core-module@^2.9.0:
   version "2.9.0"
@@ -5033,7 +5183,7 @@ is-potential-custom-element-name@^1.0.1:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/is-potential-custom-element-name/-/is-potential-custom-element-name-1.0.1.tgz#171ed6f19e3ac554394edf78caa05784a45bebb5"
   integrity sha1-Fx7W8Z46xVQ5Tt94yqBXhKRb67U=
 
-is-regex@^1.1.4:
+is-regex@^1.0.5, is-regex@^1.1.4:
   version "1.1.4"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/is-regex/-/is-regex-1.1.4.tgz#eef5663cd59fa4c0ae339505323df6854bb15958"
   integrity sha1-7vVmPNWfpMCuM5UFMj32hUuxWVg=
@@ -5069,6 +5219,11 @@ is-string@^1.0.5, is-string@^1.0.7:
   integrity sha1-DdEr8gBvJVu1j2lREO/3SR7rwP0=
   dependencies:
     has-tostringtag "^1.0.0"
+
+is-subset@^0.1.1:
+  version "0.1.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/is-subset/-/is-subset-0.1.1.tgz#8a59117d932de1de00f245fcdd39ce43f1e939a6"
+  integrity sha1-ilkRfZMt4d4A8kX83TnOQ/HpOaY=
 
 is-symbol@^1.0.2, is-symbol@^1.0.3:
   version "1.0.4"
@@ -5904,6 +6059,21 @@ lodash.debounce@^4.0.8:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
   integrity sha1-gteb/zCmfEAF/9XiUVMArZyk168=
 
+lodash.escape@^4.0.1:
+  version "4.0.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/lodash.escape/-/lodash.escape-4.0.1.tgz#c9044690c21e04294beaa517712fded1fa88de98"
+  integrity sha1-yQRGkMIeBClL6qUXcS/e0fqI3pg=
+
+lodash.flattendeep@^4.4.0:
+  version "4.4.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/lodash.flattendeep/-/lodash.flattendeep-4.4.0.tgz#fb030917f86a3134e5bc9bec0d69e0013ddfedb2"
+  integrity sha1-+wMJF/hqMTTlvJvsDWngAT3f7bI=
+
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -6098,6 +6268,11 @@ mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.6"
 
+moo@^0.5.0:
+  version "0.5.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/moo/-/moo-0.5.1.tgz#7aae7f384b9b09f620b6abf6f74ebbcd1b65dbc4"
+  integrity sha1-eq5/OEubCfYgtqv29067zRtl28Q=
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
@@ -6130,6 +6305,16 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
+
+nearley@^2.7.10:
+  version "2.20.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/nearley/-/nearley-2.20.1.tgz#246cd33eff0d012faf197ff6774d7ac78acdd474"
+  integrity sha1-JGzTPv8NAS+vGX/2d016x4rN1HQ=
+  dependencies:
+    commander "^2.19.0"
+    moo "^0.5.0"
+    railroad-diagrams "^1.0.0"
+    randexp "0.4.6"
 
 negotiator@0.6.3:
   version "0.6.3"
@@ -6215,10 +6400,18 @@ object-hash@^3.0.0:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/object-hash/-/object-hash-3.0.0.tgz#73f97f753e7baffc0e2cc9d6e079079744ac82e9"
   integrity sha1-c/l/dT57r/wOLMnW4HkHl0Ssguk=
 
-object-inspect@^1.12.0, object-inspect@^1.9.0:
+object-inspect@^1.12.0, object-inspect@^1.7.0, object-inspect@^1.9.0:
   version "1.12.2"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/object-inspect/-/object-inspect-1.12.2.tgz#c0641f26394532f28ab8d796ab954e43c009a8ea"
   integrity sha1-wGQfJjlFMvKKuNeWq5VOQ8AJqOo=
+
+object-is@^1.0.2, object-is@^1.1.2:
+  version "1.1.5"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/object-is/-/object-is-1.1.5.tgz#b9deeaa5fc7f1846a0faecdceec138e5778f53ac"
+  integrity sha1-ud7qpfx/GEag+uzc7sE45XePU6w=
+  dependencies:
+    call-bind "^1.0.2"
+    define-properties "^1.1.3"
 
 object-keys@^1.1.1:
   version "1.1.1"
@@ -6235,7 +6428,7 @@ object.assign@^4.1.0, object.assign@^4.1.2:
     has-symbols "^1.0.1"
     object-keys "^1.1.1"
 
-object.entries@^1.1.5:
+object.entries@^1.1.1, object.entries@^1.1.5:
   version "1.1.5"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/object.entries/-/object.entries-1.1.5.tgz#e1acdd17c4de2cd96d5a08487cfb9db84d881861"
   integrity sha1-4azdF8TeLNltWghIfPuduE2IGGE=
@@ -6271,7 +6464,7 @@ object.hasown@^1.1.1:
     define-properties "^1.1.4"
     es-abstract "^1.19.5"
 
-object.values@^1.1.0, object.values@^1.1.5:
+object.values@^1.1.0, object.values@^1.1.1, object.values@^1.1.5:
   version "1.1.5"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/object.values/-/object.values-1.1.5.tgz#959f63e3ce9ef108720333082131e4a459b716ac"
   integrity sha1-lZ9j486e8QhyAzMIITHkpFm3Fqw=
@@ -6436,10 +6629,25 @@ parse-json@^5.0.0, parse-json@^5.2.0:
     json-parse-even-better-errors "^2.3.0"
     lines-and-columns "^1.1.6"
 
+parse5-htmlparser2-tree-adapter@^7.0.0:
+  version "7.0.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-7.0.0.tgz#23c2cc233bcf09bb7beba8b8a69d46b08c62c2f1"
+  integrity sha1-I8LMIzvPCbt766i4pp1GsIxiwvE=
+  dependencies:
+    domhandler "^5.0.2"
+    parse5 "^7.0.0"
+
 parse5@6.0.1:
   version "6.0.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/parse5/-/parse5-6.0.1.tgz#e1a1c085c569b3dc08321184f19a39cc27f7c30b"
   integrity sha1-4aHAhcVps9wIMhGE8Zo5zCf3wws=
+
+parse5@^7.0.0:
+  version "7.1.1"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/parse5/-/parse5-7.1.1.tgz#4649f940ccfb95d8754f37f73078ea20afe0c746"
+  integrity sha1-Rkn5QMz7ldh1Tzf3MHjqIK/gx0Y=
+  dependencies:
+    entities "^4.4.0"
 
 parseurl@~1.3.2, parseurl@~1.3.3:
   version "1.3.3"
@@ -7201,6 +7409,19 @@ raf@^3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
+railroad-diagrams@^1.0.0:
+  version "1.0.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/railroad-diagrams/-/railroad-diagrams-1.0.0.tgz#eb7e6267548ddedfb899c1b90e57374559cddb7e"
+  integrity sha1-635iZ1SN3t+4mcG5Dlc3RVnN234=
+
+randexp@0.4.6:
+  version "0.4.6"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/randexp/-/randexp-0.4.6.tgz#e986ad5e5e31dae13ddd6f7b3019aa7c87f60ca3"
+  integrity sha1-6YatXl4x2uE93W97MBmqfIf2DKM=
+  dependencies:
+    discontinuous-range "1.0.0"
+    ret "~0.1.10"
+
 randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -7283,6 +7504,11 @@ react-fast-compare@^2.0.1:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha1-6EtNRVsP7BE+BALDKTUnFRlvgfk=
 
+"react-is@^16.12.0 || ^17.0.0 || ^18.0.0", react-is@^18.0.0, react-is@^18.2.0:
+  version "18.2.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
+  integrity sha1-GZQx7qqi4J+GQn77tPFHPttHYJs=
+
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
@@ -7292,11 +7518,6 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha1-5pHUqOnHiTZWVVOas3J2Kw77VPA=
-
-react-is@^18.0.0:
-  version "18.2.0"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-is/-/react-is-18.2.0.tgz#199431eeaaa2e09f86427efbb4f1473edb47609b"
-  integrity sha1-GZQx7qqi4J+GQn77tPFHPttHYJs=
 
 react-redux@^8.0.2:
   version "8.0.2"
@@ -7384,6 +7605,23 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-shallow-renderer@^16.15.0:
+  version "16.15.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-shallow-renderer/-/react-shallow-renderer-16.15.0.tgz#48fb2cf9b23d23cde96708fe5273a7d3446f4457"
+  integrity sha1-SPss+bI9I83pZwj+UnOn00RvRFc=
+  dependencies:
+    object-assign "^4.1.1"
+    react-is "^16.12.0 || ^17.0.0 || ^18.0.0"
+
+react-test-renderer@^18.0.0:
+  version "18.2.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-test-renderer/-/react-test-renderer-18.2.0.tgz#1dd912bd908ff26da5b9fca4fd1c489b9523d37e"
+  integrity sha1-HdkSvZCP8m2lufyk/RxIm5Uj034=
+  dependencies:
+    react-is "^18.2.0"
+    react-shallow-renderer "^16.15.0"
+    scheduler "^0.23.0"
 
 react@^18.2.0:
   version "18.2.0"
@@ -7609,6 +7847,11 @@ resolve@^2.0.0-next.3:
     path-parse "^1.0.7"
     supports-preserve-symlinks-flag "^1.0.0"
 
+ret@~0.1.10:
+  version "0.1.15"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/ret/-/ret-0.1.15.tgz#b8a4825d5bdb1fc3f6f53c2bc33f81388681c7bc"
+  integrity sha1-uKSCXVvbH8P29Twrwz+BOIaBx7w=
+
 retry@^0.13.1:
   version "0.13.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/retry/-/retry-0.13.1.tgz#185b1587acf67919d63b357349e03537b2484658"
@@ -7642,6 +7885,14 @@ rollup@^2.43.1:
   integrity sha1-dJ6qWsCba6pSrMB2vEZhPt39U/Q=
   optionalDependencies:
     fsevents "~2.3.2"
+
+rst-selector-parser@^2.2.3:
+  version "2.2.3"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/rst-selector-parser/-/rst-selector-parser-2.2.3.tgz#81b230ea2fcc6066c89e3472de794285d9b03d91"
+  integrity sha1-gbIw6i/MYGbInjRy3nlChdmwPZE=
+  dependencies:
+    lodash.flattendeep "^4.4.0"
+    nearley "^2.7.10"
 
 run-parallel@^1.1.9:
   version "1.2.0"
@@ -8039,6 +8290,15 @@ string.prototype.matchall@^4.0.6, string.prototype.matchall@^4.0.7:
     internal-slot "^1.0.3"
     regexp.prototype.flags "^1.4.1"
     side-channel "^1.0.4"
+
+string.prototype.trim@^1.2.1:
+  version "1.2.6"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/string.prototype.trim/-/string.prototype.trim-1.2.6.tgz#824960787db37a9e24711802ed0c1d1c0254f83e"
+  integrity sha1-gklgeH2zep4kcRgC7QwdHAJU+D4=
+  dependencies:
+    call-bind "^1.0.2"
+    define-properties "^1.1.4"
+    es-abstract "^1.19.5"
 
 string.prototype.trimend@^1.0.5:
   version "1.0.5"
