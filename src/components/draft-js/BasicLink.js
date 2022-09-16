@@ -18,7 +18,8 @@ const findLinkEntities = (contentBlock, callback, contentState) => {
         entityKey !== null &&
         contentState.getEntity(entityKey).getType() === 'LINK'
       )
-    }
+    },
+    callback
   )
 }
 
@@ -60,28 +61,18 @@ const BasicLink = () => {
 
   const onUrlChange = (event) => setUrlValue(event.target.value)
 
-  const handleKeyCommand = (command, editorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command)
-    if (newState) {
-      onChange(newState)
-      return 'handled'
-    }
-    return 'not-handled'
-  }
-
   return (
     <div style={styles.root}>
       <input
         onChange={onUrlChange}
         type="text"
-        vlaue={urlValue}
+        value={urlValue}
       />
       <button onClick={confirmUrlChange}>Add Link</button>
       <Editor
         editorState={editorState}
-        handleKeyCommand={handleKeyCommand}
         onChange={onChange}
-        style={styles.editor} />
+        placeholder="Enter some text..." />
       <button onClick={logState}>Log State</button>
     </div>
   )
