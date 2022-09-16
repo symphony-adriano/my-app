@@ -12,7 +12,7 @@
     background-color: #fff;
 }
 
-.modal-header, modal-footer {
+.modal-header, .modal-footer {
     padding: 10px;
 }
 
