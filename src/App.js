@@ -1,12 +1,12 @@
 import React from 'react'
 
-import './App.css'
-import BasicLink from './components/draft-js/BasicLink';
-import ModalWrapper from './components/modal/ModalWrapper';
+// import './App.css'
+
+import ModalWrapper from './components/refs/ModalWrapper';
 
 const App = () => (
   <>
-    <BasicLink />
+    <ModalWrapper />
   </>
 )
 
