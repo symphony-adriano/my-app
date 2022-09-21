@@ -1,5 +1,8 @@
-import { CompositeDecorator, convertToRaw, Editor, EditorState, RichUtils } from 'draft-js'
+import { CompositeDecorator, Editor, EditorState, RichUtils } from 'draft-js'
 import { useState } from 'react'
+import { logSelection, logState } from '../utils'
+
+import { styles } from './styles'
 
 const Link = ({ contentState, entityKey, children }) => {
   const { url } = contentState.getEntity(entityKey).getData()
@@ -32,14 +35,7 @@ const decorator = new CompositeDecorator([
 
 const BasicLink = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty(decorator))
-  const [urlValue, setUrlValue] = useState('www.google.com')
-
-  const onChange = editorState => setEditorState(editorState)
-
-  const logState = () => {
-    const content = editorState.getCurrentContent();
-    console.log(convertToRaw(content));
-  };
+  const [urlValue, setUrlValue] = useState('')
 
   const confirmUrlChange = (event) => {
     event.preventDefault()
@@ -51,6 +47,7 @@ const BasicLink = () => {
     )
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
     const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity })
+
     setEditorState(RichUtils.toggleLink(
       newEditorState,
       newEditorState.getSelection(),
@@ -71,44 +68,13 @@ const BasicLink = () => {
       <button onClick={confirmUrlChange}>Add Link</button>
       <Editor
         editorState={editorState}
-        onChange={onChange}
+        onChange={setEditorState}
         placeholder="Enter some text..." />
-      <button onClick={logState}>Log State</button>
+      <button onClick={() => logState(editorState)}>Log State</button>
+      <br />
+      <button onClick={() => logSelection(editorState)}>Log Selection</button>
     </div>
   )
 }
-
-const styles = {
-  root: {
-    fontFamily: '\'Georgia\', serif',
-    padding: 20,
-    width: 600,
-  },
-  buttons: {
-    marginBottom: 10,
-  },
-  urlInputContainer: {
-    marginBottom: 10,
-  },
-  urlInput: {
-    fontFamily: '\'Georgia\', serif',
-    marginRight: 10,
-    padding: 3,
-  },
-  editor: {
-    border: '1px solid #ccc',
-    cursor: 'text',
-    minHeight: 80,
-    padding: 10,
-  },
-  button: {
-    marginTop: 10,
-    textAlign: 'center',
-  },
-  link: {
-    color: '#3b5998',
-    textDecoration: 'underline',
-  },
-};
 
 export default BasicLink
