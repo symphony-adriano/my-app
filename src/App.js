@@ -1,7 +1,7 @@
 import React from 'react'
-import BasicLink from './components/draft-js/link/BasicLink';
 
-// import './App.css'
+import './App.css'
+import BasicLink from './components/draft-js/link/BasicLink';
 
 const App = () => (
   <>

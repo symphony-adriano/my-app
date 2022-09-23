@@ -4052,6 +4052,11 @@ draft-js@^0.11.7:
     immutable "~3.7.4"
     object-assign "^4.1.1"
 
+draftjs-utils@^0.10.2:
+  version "0.10.2"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/draftjs-utils/-/draftjs-utils-0.10.2.tgz#a7f16d2c1c174ac38ba3bbf700c256f176b2699c"
+  integrity sha1-p/FtLBwXSsOLo7v3AMJW8XayaZw=
+
 duplexer@^0.1.2:
   version "0.1.2"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/duplexer/-/duplexer-0.1.2.tgz#3abe43aef3835f8ae077d136ddce0f276b0400e6"

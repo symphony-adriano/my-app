@@ -1,4 +1,5 @@
 import { CompositeDecorator, Editor, EditorState, RichUtils } from 'draft-js'
+import { getSelectionText } from 'draftjs-utils'
 import { useState } from 'react'
 import { logSelection, logState } from '../utils'
 
@@ -56,6 +57,11 @@ const BasicLink = () => {
     setUrlValue('')
   }
 
+  const getSelectedText = () => {
+    const selectedText = getSelectionText(editorState)
+    setUrlValue(selectedText)
+  }
+
   const onUrlChange = (event) => setUrlValue(event.target.value)
 
   return (
@@ -66,6 +72,7 @@ const BasicLink = () => {
         value={urlValue}
       />
       <button onClick={confirmUrlChange}>Add Link</button>
+      <button onClick={getSelectedText}>Get Selected Text</button>
       <Editor
         editorState={editorState}
         onChange={setEditorState}
