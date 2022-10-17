@@ -1,11 +1,10 @@
 import React from 'react'
 
-import './App.css'
-import BasicLink from './components/draft-js/link/BasicLink';
+import SelectText from './components/draft-js/link/SelectText';
 
 const App = () => (
   <>
-    <BasicLink />
+    <SelectText />
   </>
 )
 
