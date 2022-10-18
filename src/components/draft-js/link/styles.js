@@ -26,7 +26,7 @@ const styles = {
         textAlign: 'center',
     },
     link: {
-        color: '#3b5998',
+        color: 'blue',
         textDecoration: 'underline',
     },
 };

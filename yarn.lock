@@ -2026,14 +2026,6 @@
   dependencies:
     "@types/node" "*"
 
-"@types/draft-js@^0.10.40":
-  version "0.10.45"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/@types/draft-js/-/draft-js-0.10.45.tgz"
-  integrity sha1-SrWweF/Kzep9WoNtACQVj6gQjnA=
-  dependencies:
-    "@types/react" "*"
-    immutable "~3.7.4"
-
 "@types/eslint-scope@^3.7.3":
   version "3.7.4"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/@types/eslint-scope/-/eslint-scope-3.7.4.tgz"
@@ -2147,11 +2139,6 @@
   version "0.0.29"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/@types/json5/-/json5-0.0.29.tgz"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
-
-"@types/linkify-it@^2.1.0":
-  version "2.1.0"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/@types/linkify-it/-/linkify-it-2.1.0.tgz"
-  integrity sha1-6j3WTEgFWXMReQth6HLL0e0s2AY=
 
 "@types/mime@^1":
   version "1.3.2"
@@ -4044,25 +4031,6 @@ dotenv@^10.0.0:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/dotenv/-/dotenv-10.0.0.tgz"
   integrity sha1-PUInuPuV+BCWzdK2ZlP7LHCFuoE=
 
-draft-js-link-detection-plugin@^0.0.4:
-  version "0.0.4"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/draft-js-link-detection-plugin/-/draft-js-link-detection-plugin-0.0.4.tgz"
-  integrity sha1-QX0WwZJ6teSyMwi/CyP+wFQriEM=
-  dependencies:
-    "@types/draft-js" "^0.10.40"
-    "@types/linkify-it" "^2.1.0"
-    linkify-it "^3.0.2"
-    react "^16.12.0"
-    react-dom "^16.12.0"
-
-draft-js-plugins-editor@^3.0.0:
-  version "3.0.0"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/draft-js-plugins-editor/-/draft-js-plugins-editor-3.0.0.tgz#196d1e065e2c29faebaab4ec081b734fdef294a2"
-  integrity sha1-GW0eBl4sKfrrqrTsCBtzT97ylKI=
-  dependencies:
-    immutable "~3.7.4"
-    prop-types "^15.5.8"
-
 draft-js@^0.11.7:
   version "0.11.7"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/draft-js/-/draft-js-0.11.7.tgz"
@@ -5308,6 +5276,11 @@ immer@^9.0.7:
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/immer/-/immer-9.0.15.tgz"
   integrity sha1-C5Fp5bHSITerp9Q/ioGkld0bYtw=
 
+immutable@^4.1.0:
+  version "4.1.0"
+  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/immutable/-/immutable-4.1.0.tgz#f795787f0db780183307b9eb2091fcac1f6fafef"
+  integrity sha1-95V4fw23gBgzB7nrIJH8rB9vr+8=
+
 immutable@~3.7.4:
   version "3.7.6"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/immutable/-/immutable-3.7.6.tgz"
@@ -6312,13 +6285,6 @@ lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/lines-and-columns/-/lines-and-columns-1.2.4.tgz"
   integrity sha1-7KKE910pZQeTCdwK2SVauy68FjI=
-
-linkify-it@^3.0.2:
-  version "3.0.3"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/linkify-it/-/linkify-it-3.0.3.tgz"
-  integrity sha1-qYuvRM5FpVDvtNScdp0HUkzC+i4=
-  dependencies:
-    uc.micro "^1.0.1"
 
 loader-runner@^4.2.0:
   version "4.3.0"
@@ -7687,7 +7653,7 @@ prompts@^2.0.1, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.8, prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/prop-types/-/prop-types-15.8.1.tgz"
   integrity sha1-Z9h78aaU9IQ1zzMsJK8QIUoxQLU=
@@ -7819,16 +7785,6 @@ react-dev-utils@^12.0.1:
     shell-quote "^1.7.3"
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
-
-react-dom@^16.12.0:
-  version "16.14.0"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react-dom/-/react-dom-16.14.0.tgz"
-  integrity sha1-etg47Cmnd/s8dcOhkPZhz5Kri4k=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    prop-types "^15.6.2"
-    scheduler "^0.19.1"
 
 react-dom@^18.2.0:
   version "18.2.0"
@@ -7975,15 +7931,6 @@ react-transition-group@^4.4.5:
     "@babel/runtime" "^7.5.5"
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
-    prop-types "^15.6.2"
-
-react@^16.12.0:
-  version "16.14.0"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/react/-/react-16.14.0.tgz"
-  integrity sha1-lNd23dCqo32j7aj8W2sYpMmjEU0=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
     prop-types "^15.6.2"
 
 react@^18.2.0:
@@ -8303,14 +8250,6 @@ saxes@^5.0.1:
   integrity sha1-7rq5U/o7dgjb6U5drbFciI+maW0=
   dependencies:
     xmlchars "^2.2.0"
-
-scheduler@^0.19.1:
-  version "0.19.1"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/scheduler/-/scheduler-0.19.1.tgz"
-  integrity sha1-Tz4u0sGn1laB9MhU+oxaHMtA8ZY=
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 scheduler@^0.23.0:
   version "0.23.0"
@@ -9108,11 +9047,6 @@ ua-parser-js@^0.7.18:
   version "0.7.31"
   resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/ua-parser-js/-/ua-parser-js-0.7.31.tgz"
   integrity sha1-ZJplaxkd/6tPIdXgU+J8oXy/9cY=
-
-uc.micro@^1.0.1:
-  version "1.0.6"
-  resolved "https://repo.symphony.com/artifactory/api/npm/npm-virtual-dev/uc.micro/-/uc.micro-1.0.6.tgz"
-  integrity sha1-nEEagCpAmpH8bPdAgbq6NLJEmaw=
 
 unbox-primitive@^1.0.2:
   version "1.0.2"

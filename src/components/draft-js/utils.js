@@ -1,8 +1,7 @@
 import { convertToRaw } from "draft-js"
 
 const logState = editorState => {
-    const content = editorState.getCurrentContent()
-    console.log(convertToRaw(content))
+    console.log(convertToRaw(editorState.getCurrentContent()))
 }
 
 const logSelection = editorState => {

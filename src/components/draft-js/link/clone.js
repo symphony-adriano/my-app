@@ -1,7 +1,7 @@
-import { Modifier, BlockMapBuilder, applyEntityToContentBlock, Entity, CompositeDecorator, Editor, EditorState, RichUtils } from 'draft-js'
-import { getEntityRange, getSelectionText, getSelectionEntity } from 'draftjs-utils'
+import { Modifier, CharacterMetadata, Entity, CompositeDecorator, Editor, EditorState, RichUtils } from 'draft-js'
 import { useState, useRef } from 'react'
 import { logSelection, logState } from '../utils'
+import Immutable from 'immutable'
 
 import { styles } from './styles'
 
@@ -34,23 +34,17 @@ const decorator = new CompositeDecorator([
   }
 ])
 
+const { OrderedMap } = Immutable;
+
 const SelectText = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty(decorator))
-  const [title, setTitle] = useState('')
-  const [urlValue, setUrlValue] = useState('www.google.com')
-  const [target, setTarget] = useState('')
-  const [text, setText] = useState('')
 
   const myRef = useRef(null)
 
-  const confirmUrlChange = (event) => {
+  const confirmUrlChange = (event, url) => {
     event.preventDefault()
     const contentState = editorState.getCurrentContent()
-    const contentStateWithEntity = contentState.createEntity(
-      'LINK',
-      'MUTABLE',
-      { url: urlValue }
-    )
+    const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', { url })
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
     const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity })
 
@@ -59,64 +53,23 @@ const SelectText = () => {
       newEditorState.getSelection(),
       entityKey,
     ))
-    setUrlValue('')
   }
 
-  const getTarget = () => {
-    const contentState = editorState.getCurrentContent()
-    const entityKey = getSelectionEntity(editorState)
+  var BlockMapBuilder = {
+    createFromArray: (blocks) => OrderedMap(blocks.map(block => [block.getKey(), block]))
+  };
 
-    const entity = getEntity(contentState, entityKey)
-
-    if (isLink(entity)) {
-      return getUrl(entity)
+  function applyEntityToContentBlock(contentBlock, start, end, entityKey) {
+    var characterList = contentBlock.getCharacterList();
+    while (start < end) {
+      characterList = characterList.set(
+        start,
+        CharacterMetadata.applyEntity(characterList.get(start), entityKey)
+      );
+      start++;
     }
-
-    return 'nada'
-  }
-
-  const getEntity = (contentState, entityKey) => contentState.getEntity(entityKey)
-
-  const isLink = entity => entity.get('type') === 'LINK'
-
-  const getUrl = entity => entity.get('data').url
-
-  const getTitle = () => {
-    const entityKey = getSelectionEntity(editorState)
-    const entityRange = getEntityRange(editorState, entityKey)
-    return entityRange?.text
-  }
-
-  const _getTitle = entityKey => {
-    const entityRange = getEntityRange(editorState, entityKey)
-    return entityRange?.text
-  }
-
-  const getText = () => getSelectionText(editorState)
-
-  const superGet = () => {
-    const contentState = editorState.getCurrentContent()
-    const entityKey = getSelectionEntity(editorState)
-
-    if (entityKey) {
-      const entity = getEntity(contentState, entityKey)
-
-      if (isLink(entity)) {
-        const title = _getTitle(entityKey)
-        const target = getUrl(entity)
-
-        if (title === target) {
-          console.log('raw link')
-
-        } else {
-          console.log('hyperlink')
-        }
-        return
-      }
-      return
-    }
-    console.log('raw text')
-  }
+    return contentBlock.set('characterList', characterList);
+  };
 
   function insertFragment(editorState, fragment) {
     let newContent = Modifier.replaceWithFragment(
@@ -138,27 +91,33 @@ const SelectText = () => {
   const _handlePastedText = (text, styles, editorState) => {
     const clipboard = myRef.current.getClipboard()
 
+    // console.log(JSON.stringify(clipboard, null, 2))
+
     if (clipboard) {
       const clonedClipboard = cloneEntitiesInFragment(clipboard)
       _onChange(insertFragment(editorState, clonedClipboard))
+      return true
+    }
+    else {
+      return false
     }
   }
 
   const cloneEntitiesInFragment = (fragment) => {
-    // Get all entities referenced in the fragment
+
     const entities = {};
     fragment.forEach(block => {
       block.getCharacterList().forEach(character => {
         const key = character.getEntity();
-        if (key !== null) {
+        if (key) {
           entities[key] = Entity.get(key);
         }
       });
     });
-  
+
     // Clone each entity that was referenced and
     // build a map from old entityKeys to new ones
-    const newEntityKeys = {};
+    const newEntityKeys = {}
     Object.keys(entities).forEach((key) => {
       const entity = entities[key];
       const newEntityKey = Entity.create(
@@ -167,8 +126,8 @@ const SelectText = () => {
         entity.get('data')
       );
       newEntityKeys[key] = newEntityKey;
-    });
-  
+    })
+
     // Update all the entity references
     let newFragment = BlockMapBuilder.createFromArray([]);
     fragment.forEach((block, blockKey) => {
@@ -183,35 +142,24 @@ const SelectText = () => {
         }
       );
     });
-  
+    // console.log(JSON.stringify(newFragment, null, 2))
     return newFragment;
   }
 
   return (
     <div style={styles.root}>
-      <h1>TargetLink</h1>
-      <p>text: {text}</p>
-      <p>title: {title}</p>
-      <p>target: {target}</p>
-      ---
+      <h1>CLONE</h1>
       <Editor
         ref={myRef}
-        className='editor'
         editorState={editorState}
         onChange={_onChange}
         handlePastedText={_handlePastedText}
         placeholder="Enter some text..." />
-      <button onClick={confirmUrlChange}>Add Link</button>
+      <button onClick={(event) => confirmUrlChange(event, 'http://www.google.com')}>google</button>
+      <button onClick={(event) => confirmUrlChange(event, 'http://www.repubblica.com')}>Repubblica</button>
       <br />
       <button onClick={() => logState(editorState)}>Log State</button>
       <button onClick={() => logSelection(editorState)}>Log Selection</button>
-      <br />
-      <button onClick={() => setText(getText())}>get text</button>
-      <button onClick={() => setTarget(getTarget())}>get Target</button>
-      <button onClick={() => setTitle(getTitle())}>get Title</button>
-      <br />
-      <button onClick={superGet}>super</button>
-
     </div>
   )
 }
