@@ -1,9 +1,198 @@
-import { Modifier, CharacterMetadata, Entity, CompositeDecorator, Editor, EditorState, RichUtils } from 'draft-js'
-import { useState, useRef } from 'react'
-import { logSelection, logState } from '../utils'
-import Immutable from 'immutable'
+import {
+  convertToRaw,
+  CompositeDecorator,
+  Editor,
+  EditorState,
+  RichUtils,
+} from 'draft-js';
+import React from 'react'
 
-import { styles } from './styles'
+class LinkEditorExample extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const decorator = new CompositeDecorator([
+      {
+        strategy: findLinkEntities,
+        component: Link,
+      },
+    ]);
+
+    this.state = {
+      editorState: EditorState.createEmpty(decorator),
+      showURLInput: false,
+      urlValue: '',
+    };
+
+    this.focus = () => this.refs.editor.focus();
+    this.onChange = (editorState) => this.setState({editorState});
+    this.logState = () => {
+      const content = this.state.editorState.getCurrentContent();
+      console.log(convertToRaw(content));
+    };
+
+    this.promptForLink = this._promptForLink.bind(this);
+    this.onURLChange = (e) => this.setState({urlValue: e.target.value});
+    this.confirmLink = this._confirmLink.bind(this);
+    this.onLinkInputKeyDown = this._onLinkInputKeyDown.bind(this);
+    this.removeLink = this._removeLink.bind(this);
+  }
+
+  _promptForLink(e) {
+    e.preventDefault();
+    const {editorState} = this.state;
+    const selection = editorState.getSelection();
+    if (!selection.isCollapsed()) {
+      const contentState = editorState.getCurrentContent();
+      const startKey = editorState.getSelection().getStartKey();
+      const startOffset = editorState.getSelection().getStartOffset();
+      const blockWithLinkAtBeginning = contentState.getBlockForKey(startKey);
+      const linkKey = blockWithLinkAtBeginning.getEntityAt(startOffset);
+
+      let url = '';
+      if (linkKey) {
+        const linkInstance = contentState.getEntity(linkKey);
+        url = linkInstance.getData().url;
+      }
+
+      this.setState({
+        showURLInput: true,
+        urlValue: url,
+      }, () => {
+        setTimeout(() => this.refs.url.focus(), 0);
+      });
+    }
+  }
+
+  _confirmLink(e) {
+    e.preventDefault();
+    const {editorState, urlValue} = this.state;
+    const contentState = editorState.getCurrentContent();
+    const contentStateWithEntity = contentState.createEntity(
+      'LINK',
+      'MUTABLE',
+      {url: urlValue}
+    );
+    const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+    const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity });
+    this.setState({
+      editorState: RichUtils.toggleLink(
+        newEditorState,
+        newEditorState.getSelection(),
+        entityKey
+      ),
+      showURLInput: false,
+      urlValue: '',
+    }, () => {
+      setTimeout(() => this.refs.editor.focus(), 0);
+    });
+  }
+
+  _onLinkInputKeyDown(e) {
+    if (e.which === 13) {
+      this._confirmLink(e);
+    }
+  }
+
+  _removeLink(e) {
+    e.preventDefault();
+    const {editorState} = this.state;
+    const selection = editorState.getSelection();
+    if (!selection.isCollapsed()) {
+      this.setState({
+        editorState: RichUtils.toggleLink(editorState, selection, null),
+      });
+    }
+  }
+
+  render() {
+    let urlInput;
+    if (this.state.showURLInput) {
+      urlInput =
+        <div style={styles.urlInputContainer}>
+          <input
+            onChange={this.onURLChange}
+            ref="url"
+            style={styles.urlInput}
+            type="text"
+            value={this.state.urlValue}
+            onKeyDown={this.onLinkInputKeyDown}
+          />
+          <button onMouseDown={this.confirmLink}>
+            Confirm
+          </button>
+        </div>;
+    }
+
+    return (
+      <div style={styles.root}>
+        <div style={{marginBottom: 10}}>
+          Select some text, then use the buttons to add or remove links
+          on the selected text.
+        </div>
+        <div style={styles.buttons}>
+          <button
+            onMouseDown={this.promptForLink}
+            style={{marginRight: 10}}>
+            Add Link
+          </button>
+          <button onMouseDown={this.removeLink}>
+            Remove Link
+          </button>
+        </div>
+        {urlInput}
+        <div style={styles.editor} onClick={this.focus}>
+          <Editor
+            editorState={this.state.editorState}
+            onChange={this.onChange}
+            placeholder="Enter some text..."
+            ref="editor"
+          />
+        </div>
+        <input
+          onClick={this.logState}
+          style={styles.button}
+          type="button"
+          value="Log State"
+        />
+      </div>
+    );
+  }
+}
+
+const styles = {
+  root: {
+    fontFamily: '\'Georgia\', serif',
+    padding: 20,
+    width: 600,
+  },
+  buttons: {
+    marginBottom: 10,
+  },
+  urlInputContainer: {
+    marginBottom: 10,
+  },
+  urlInput: {
+    fontFamily: '\'Georgia\', serif',
+    marginRight: 10,
+    padding: 3,
+  },
+  editor: {
+    border: '1px solid #ccc',
+    cursor: 'text',
+    minHeight: 80,
+    padding: 10,
+  },
+  button: {
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  link: {
+    color: '#3b5998',
+    textDecoration: 'underline',
+  },
+};
+
 
 const Link = ({ contentState, entityKey, children }) => {
   const { url } = contentState.getEntity(entityKey).getData()
@@ -34,134 +223,4 @@ const decorator = new CompositeDecorator([
   }
 ])
 
-const { OrderedMap } = Immutable;
-
-const SelectText = () => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty(decorator))
-
-  const myRef = useRef(null)
-
-  const confirmUrlChange = (event, url) => {
-    event.preventDefault()
-    const contentState = editorState.getCurrentContent()
-    const contentStateWithEntity = contentState.createEntity('LINK', 'MUTABLE', { url })
-    const entityKey = contentStateWithEntity.getLastCreatedEntityKey()
-    const newEditorState = EditorState.set(editorState, { currentContent: contentStateWithEntity })
-
-    setEditorState(RichUtils.toggleLink(
-      newEditorState,
-      newEditorState.getSelection(),
-      entityKey,
-    ))
-  }
-
-  var BlockMapBuilder = {
-    createFromArray: (blocks) => OrderedMap(blocks.map(block => [block.getKey(), block]))
-  };
-
-  function applyEntityToContentBlock(contentBlock, start, end, entityKey) {
-    var characterList = contentBlock.getCharacterList();
-    while (start < end) {
-      characterList = characterList.set(
-        start,
-        CharacterMetadata.applyEntity(characterList.get(start), entityKey)
-      );
-      start++;
-    }
-    return contentBlock.set('characterList', characterList);
-  };
-
-  function insertFragment(editorState, fragment) {
-    let newContent = Modifier.replaceWithFragment(
-      editorState.getCurrentContent(),
-      editorState.getSelection(),
-      fragment
-    );
-    return EditorState.push(
-      editorState,
-      newContent,
-      'insert-fragment'
-    );
-  }
-
-  const _onChange = editorState => {
-    setEditorState(editorState)
-  }
-
-  const _handlePastedText = (text, styles, editorState) => {
-    const clipboard = myRef.current.getClipboard()
-
-    // console.log(JSON.stringify(clipboard, null, 2))
-
-    if (clipboard) {
-      const clonedClipboard = cloneEntitiesInFragment(clipboard)
-      _onChange(insertFragment(editorState, clonedClipboard))
-      return true
-    }
-    else {
-      return false
-    }
-  }
-
-  const cloneEntitiesInFragment = (fragment) => {
-
-    const entities = {};
-    fragment.forEach(block => {
-      block.getCharacterList().forEach(character => {
-        const key = character.getEntity();
-        if (key) {
-          entities[key] = Entity.get(key);
-        }
-      });
-    });
-
-    // Clone each entity that was referenced and
-    // build a map from old entityKeys to new ones
-    const newEntityKeys = {}
-    Object.keys(entities).forEach((key) => {
-      const entity = entities[key];
-      const newEntityKey = Entity.create(
-        entity.get('type'),
-        entity.get('mutability'),
-        entity.get('data')
-      );
-      newEntityKeys[key] = newEntityKey;
-    })
-
-    // Update all the entity references
-    let newFragment = BlockMapBuilder.createFromArray([]);
-    fragment.forEach((block, blockKey) => {
-      let updatedBlock = block;
-      block.findEntityRanges(
-        character => character.getEntity() !== null,
-        (start, end) => {
-          const entityKey = block.getEntityAt(start);
-          const newEntityKey = newEntityKeys[entityKey];
-          updatedBlock = applyEntityToContentBlock(updatedBlock, start, end, newEntityKey);
-          newFragment = newFragment.set(blockKey, updatedBlock);
-        }
-      );
-    });
-    // console.log(JSON.stringify(newFragment, null, 2))
-    return newFragment;
-  }
-
-  return (
-    <div style={styles.root}>
-      <h1>CLONE</h1>
-      <Editor
-        ref={myRef}
-        editorState={editorState}
-        onChange={_onChange}
-        handlePastedText={_handlePastedText}
-        placeholder="Enter some text..." />
-      <button onClick={(event) => confirmUrlChange(event, 'http://www.google.com')}>google</button>
-      <button onClick={(event) => confirmUrlChange(event, 'http://www.repubblica.com')}>Repubblica</button>
-      <br />
-      <button onClick={() => logState(editorState)}>Log State</button>
-      <button onClick={() => logSelection(editorState)}>Log Selection</button>
-    </div>
-  )
-}
-
-export default SelectText
+export default LinkEditorExample

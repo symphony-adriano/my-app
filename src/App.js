@@ -1,10 +1,10 @@
 import React from 'react'
 
-import SelectText from './components/draft-js/link/clone';
+import LinkEditorExample from './components/draft-js/link/clone';
 
 const App = () => (
   <>
-    <SelectText />
+    <LinkEditorExample />
   </>
 )
 
