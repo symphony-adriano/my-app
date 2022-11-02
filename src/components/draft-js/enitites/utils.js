@@ -39,6 +39,8 @@ export const getEntityText = editorState => {
 
 export const DraftJsLogger = ({editorState}) => {
 
+    // dontcommit
+
     const logState = () => {
       const currentContent = editorState.getCurrentContent()
       const rawContent = convertToRaw(currentContent)    

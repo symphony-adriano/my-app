@@ -64,6 +64,8 @@ class LinkEditorExample extends React.Component {
     }
   }
 
+  // dontcommit
+
   confirmLink = (e) => {
     e.preventDefault();
     const { editorState, urlValue } = this.state;
