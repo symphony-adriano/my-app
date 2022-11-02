@@ -8,9 +8,6 @@ import React, { createRef } from 'react'
 
 import decorator from './decorator';
 import styles from './style';
-import { getEntityText } from './utils'
-
-import './styles.css'
 
 class LinkEditorExample extends React.Component {
   constructor(props) {
@@ -20,7 +17,6 @@ class LinkEditorExample extends React.Component {
       editorState: EditorState.createEmpty(decorator),
       showURLInput: false,
       urlValue: '',
-      title: '',
     };
 
     this.editorRef = createRef();
@@ -32,8 +28,6 @@ class LinkEditorExample extends React.Component {
       const content = this.state.editorState.getCurrentContent();
       console.log(convertToRaw(content));
     };
-
-    this.getRawEditorState = () => convertToRaw(this.state.editorState.getCurrentContent())
 
     this.onURLChange = (e) => this.setState({ urlValue: e.target.value });
   }
@@ -105,12 +99,6 @@ class LinkEditorExample extends React.Component {
     }
   }
 
-  setTitle = () => {
-    this.setState({
-      title: getEntityText(this.state.editorState),
-    });
-  }
-
   render() {
     let urlInput;
     if (this.state.showURLInput) {
@@ -131,84 +119,39 @@ class LinkEditorExample extends React.Component {
     }
 
     return (
-      <>
-        <div className='split right'>
-          <div style={styles.root}>
-            <div style={{ marginBottom: 10 }}>
-              Select some text, then use the buttons to add or remove links
-              on the selected text.
-            </div>
-            <div style={styles.buttons}>
-              <button
-                onMouseDown={this.promptForLink}
-                style={{ marginRight: 10 }}>
-                Add Link
-              </button>
-              <button onMouseDown={this.removeLink}>
-                Remove Link
-              </button>
-            </div>
-            {urlInput}
-            <div style={styles.editor} onClick={this.focus}>
-              <Editor
-                editorState={this.state.editorState}
-                onChange={this.onChange}
-                placeholder="Enter some text..."
-                ref={this.editorRef}
-              />
-            </div>
-            <input
-              onClick={this.logState}
-              style={styles.button}
-              type="button"
-              value="Log State"
-            />
-            <br />
-            <input
-              onClick={this.setTitle}
-              style={styles.button}
-              type="button"
-              value="Set Title"
-            />
-            {this.state.title}
-          </div>
-          <h2>Selection</h2>
-          <pre>
-            {JSON.stringify(this.state.editorState.getSelection(), null, 2)}
-          </pre>
+      <div style={styles.root}>
+        <div style={{ marginBottom: 10 }}>
+          Select some text, then use the buttons to add or remove links
+          on the selected text.
         </div>
-
-        <div className='split left'>
-          <h2>Editor State (Current Content)</h2>
-          <pre>
-            {JSON.stringify(this.getRawEditorState(), null, 2)}
-          </pre>
-          <DraftJsLogger editorState={this.state.editorState} />
+        <div style={styles.buttons}>
+          <button
+            onMouseDown={this.promptForLink}
+            style={{ marginRight: 10 }}>
+            Add Link
+          </button>
+          <button onMouseDown={this.removeLink}>
+            Remove Link
+          </button>
         </div>
-      </>
+        {urlInput}
+        <div style={styles.editor} onClick={this.focus}>
+          <Editor
+            editorState={this.state.editorState}
+            onChange={this.onChange}
+            placeholder="Enter some text..."
+            ref={this.editorRef}
+          />
+        </div>
+        <input
+          onClick={this.logState}
+          style={styles.button}
+          type="button"
+          value="Log State"
+        />
+      </div>
     );
   }
 }
 
 export default LinkEditorExample
-
-export const DraftJsLogger = ({editorState}) => {
-
-  const logState = () => {
-    const currentContent = editorState.getCurrentContent()
-    const rawContent = convertToRaw(currentContent)    
-    console.log(JSON.stringify(rawContent, null, 2))
-  }
-  
-  const logSelection = () => {
-    const selection = editorState.getSelection()
-    console.log(JSON.stringify(selection, null, 2))
-  }
-
-  return (
-    <>
-      <button onClick={logState}>LOG STATE</button>
-      <button onClick={logSelection}>LOG SELECTION</button>
-    </>
-  )
-}
