@@ -8,7 +8,7 @@ import React, { createRef } from 'react'
 
 import decorator from './decorator';
 import styles from './style';
-import { getEntityText } from './utils'
+import { DraftJsLogger, getEntityText } from './utils'
 
 import './styles.css'
 
@@ -191,24 +191,3 @@ class LinkEditorExample extends React.Component {
 }
 
 export default LinkEditorExample
-
-export const DraftJsLogger = ({editorState}) => {
-
-  const logState = () => {
-    const currentContent = editorState.getCurrentContent()
-    const rawContent = convertToRaw(currentContent)    
-    console.log(JSON.stringify(rawContent, null, 2))
-  }
-  
-  const logSelection = () => {
-    const selection = editorState.getSelection()
-    console.log(JSON.stringify(selection, null, 2))
-  }
-
-  return (
-    <>
-      <button onClick={logState}>LOG STATE</button>
-      <button onClick={logSelection}>LOG SELECTION</button>
-    </>
-  )
-}
