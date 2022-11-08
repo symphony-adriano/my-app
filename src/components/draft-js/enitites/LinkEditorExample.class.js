@@ -8,7 +8,8 @@ import React, { createRef } from 'react'
 
 import decorator from './decorator';
 import styles from './style';
-import { DraftJsLogger, getEntityText } from './utils'
+import { getEntityText } from './utils/utils'
+import { DraftJsLogger } from './utils/Logger'
 
 import './styles.css'
 
@@ -64,8 +65,6 @@ class LinkEditorExample extends React.Component {
     }
   }
 
-  // dontcommit
-
   confirmLink = (e) => {
     e.preventDefault();
     const { editorState, urlValue } = this.state;
@@ -107,7 +106,7 @@ class LinkEditorExample extends React.Component {
     }
   }
 
-  setTitle = () => {
+  printTitle = () => {
     this.setState({
       title: getEntityText(this.state.editorState),
     });
@@ -159,33 +158,24 @@ class LinkEditorExample extends React.Component {
                 ref={this.editorRef}
               />
             </div>
-            <input
-              onClick={this.logState}
-              style={styles.button}
-              type="button"
-              value="Log State"
-            />
             <br />
             <input
-              onClick={this.setTitle}
+              onClick={this.printTitle}
               style={styles.button}
               type="button"
-              value="Set Title"
+              value="Print Title"
             />
-            {this.state.title}
+            <pre>{this.state.title}</pre>
+            <h4>Selection:</h4>
+            <pre>{JSON.stringify(this.state.editorState.getSelection(), null, 2)}</pre>
           </div>
-          <h2>Selection</h2>
-          <pre>
-            {JSON.stringify(this.state.editorState.getSelection(), null, 2)}
-          </pre>
         </div>
 
         <div className='split left'>
-          <h2>Editor State (Current Content)</h2>
-          <pre>
-            {JSON.stringify(this.getRawEditorState(), null, 2)}
-          </pre>
-          <DraftJsLogger editorState={this.state.editorState} />
+          <h4>Current Content:</h4>
+          <pre>{JSON.stringify(this.getRawEditorState(), null, 2)}</pre>
+
+          {/* <DraftJsLogger editorState={this.state.editorState} /> */}
         </div>
       </>
     );
