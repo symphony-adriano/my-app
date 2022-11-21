@@ -34,4 +34,3 @@ export const getEntityText = editorState => {
 
   return realEntityText
 }
-
