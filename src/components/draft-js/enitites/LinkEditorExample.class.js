@@ -155,7 +155,7 @@ class LinkEditorExample extends React.Component {
                 editorState={this.state.editorState}
                 onChange={this.onChange}
                 placeholder="Enter some text..."
-                ref={this.editorRef}
+                // ref={this.editorRef}
               />
             </div>
             <br />

@@ -4,8 +4,10 @@ import './Modal.css'
 
 const Modal = ({ title, children, onClose }) => {
 
+  const ESCAPE = 27
+
   const closeOnEscapeKeyDown = event => {
-    if ((event.charCode || event.keyCode) === 27) {
+    if ((event.charCode || event.keyCode) === ESCAPE) {
       onClose()
     }
   }
