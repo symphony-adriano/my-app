@@ -12,6 +12,7 @@ import { getEntityText } from './utils/utils'
 import { DraftJsLogger } from './utils/Logger'
 
 import './styles.css'
+import { Stocazzo } from './Stocazzo';
 
 class LinkEditorExample extends React.Component {
   constructor(props) {
@@ -71,7 +72,7 @@ class LinkEditorExample extends React.Component {
     const contentState = editorState.getCurrentContent();
     const contentStateWithEntity = contentState.createEntity(
       'LINK',
-      'MUTABLE',
+      'IMMUTABLE',
       { url: urlValue }
     );
     const entityKey = contentStateWithEntity.getLastCreatedEntityKey();
@@ -104,6 +105,12 @@ class LinkEditorExample extends React.Component {
         editorState: RichUtils.toggleLink(editorState, selection, null),
       });
     }
+  }
+
+  stocazzo = (editorState) => {
+    this.setState({
+      editorState
+    });
   }
 
   printTitle = () => {
@@ -145,9 +152,7 @@ class LinkEditorExample extends React.Component {
                 style={{ marginRight: 10 }}>
                 Add Link
               </button>
-              <button onMouseDown={this.removeLink}>
-                Remove Link
-              </button>
+              <Stocazzo editorState={this.state.editorState} setStocazzo={this.stocazzo} />
             </div>
             {urlInput}
             <div style={styles.editor} onClick={this.focus}>
@@ -155,7 +160,7 @@ class LinkEditorExample extends React.Component {
                 editorState={this.state.editorState}
                 onChange={this.onChange}
                 placeholder="Enter some text..."
-                // ref={this.editorRef}
+              // ref={this.editorRef}
               />
             </div>
             <br />
