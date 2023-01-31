@@ -10,24 +10,27 @@ export class DataSource {
       text: 'hola'
     },
   ]
-  changeListeners = []
+  changeListeners = null
 
   constructor() {
 
   }
 
   addChangeListener = (changeListener) => {
-    this.changeListeners.push(changeListener)
+    this.changeListeners = changeListener
   }
 
   removeChangeListener = () => {
-    this.changeListeners = []
+    this.changeListeners = null
   }
 
   update = () => {
-    this.comments.push({id: 3, text: 'salut'})
-    this.changeListeners[0]()
+    this.comments.push({ id: 3, text: 'salut' })
+    this.changeListeners(this.comments)
   }
 
-  getComments = () => this.comments
+  getComments = () => {
+    console.log('getComments')
+    return this.comments
+  }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { DataSource } from "../DataSource";
+import { DataSource } from "../../DataSource";
 
 export function withSubscription(WrappedComponent) {
   return class extends React.Component {
@@ -35,3 +35,7 @@ export function withSubscription(WrappedComponent) {
     </>
   }
 }
+
+// const CommentListWithSubscription = withSubscription(CommentList)
+  
+// return <CommentListWithSubscription />

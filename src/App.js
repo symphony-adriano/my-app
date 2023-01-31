@@ -1,16 +1,15 @@
 import React from 'react'
+import Color from './components/color/Color';
 
 // import LinkEditorExample from './components/draft-js/enitites/LinkEditorExample.class';
 
-import { CommentList } from './components/HOC/after/CommentList';
-import { withSubscription } from './components/HOC/after/withSubscription';
+import { CommentList } from './components/share-stateful-logic/custom-hooks/before/CommentList';
+import { withSubscription } from './components/share-stateful-logic/HOC/after/withSubscription';
 
 
 const App = () => {
 
-  const CommentListWithSubscription = withSubscription(CommentList)
-  
-  return <CommentListWithSubscription />
+  return <Color />
 
 }
 
