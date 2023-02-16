@@ -1,0 +1,86 @@
+.wrapper {
+    width: min-content;
+}
+
+.automatic {
+    border: 1px solid white;
+    border-radius: 10px;
+    text-align: center;
+    height: 2.6rem;
+    line-height: 2.6rem;
+    margin-bottom: 1rem;
+}
+
+.colors {
+    /* border: 1px solid green; */
+    display: grid;
+    grid-template-columns: 1.5rem 1.5rem 1.5rem 1.5rem;
+    grid-template-rows: 1.5rem 1.5rem;
+    grid-gap: 1.5rem;
+
+    width: min-content;
+}
+
+.box {
+    border: 1px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.active {
+    box-shadow: 4px 4px 8px black;
+}
+
+.red {
+    background-color: red;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.lightgreen {
+    background-color: lightgreen;
+}
+
+.green {
+    background-color: green;
+}
+
+.darkgreen {
+    background-color: darkgreen;
+}
+
+.blue {
+    background-color: blue;
+}
+
+.magenta {
+    background-color: magenta;
+}
+
+.container {
+    display: flex;
+}
+
+/* .split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding: 10px;
+}
+
+.left {
+    right: 0;
+}
+
+.right {
+    left: 0;
+} */
